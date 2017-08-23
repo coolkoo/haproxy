@@ -22,7 +22,8 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-listen appname 0.0.0.0:8080
+listen nginx
+    bind 0.0.0.0:80
     mode http
     stats enable
     stats uri /haproxy?stats
@@ -31,4 +32,4 @@ listen appname 0.0.0.0:8080
     balance roundrobin
     option httpclose
     option forwardfor
-    server nginx 40.78.97.72:80 check
+    server nginx localhost:8081 check
